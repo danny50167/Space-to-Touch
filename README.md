@@ -31,6 +31,7 @@
 | `docs/wiring.md` | 배선도와 전원 설계 |
 | `docs/parts.md` | 준비물 목록 (전자 부품, 기구 부품, 실험 도구) |
 | `docs/logbook-template.md` | 설계 일지 양식 |
+| `firmware/00_i2c_scan` | 부품 확인: I2C 장치 검사, 진짜 VL53L1X인지 확인, 멀티플렉서 채널별 검사 |
 | `firmware/01_single_sensor_test` | 센서 1개: 거리 모드 비교, 정확도 측정 |
 | `firmware/02_six_sensors_mux` | 센서 6개 + 멀티플렉서: 순차/연속 측정 비교, 갱신 속도 측정 |
 | `firmware/03_motor_localization_test` | 진동 위치 인식 실험 (착용 부위 비교용) |
@@ -39,7 +40,7 @@
 ## 시작하기
 
 1. Arduino IDE → 라이브러리 매니저에서 **"VL53L1X" (by Pololu)** 를 설치한다.
-2. `firmware/01_...` 부터 순서대로 업로드하며 진행한다. 각 스케치 맨 위 주석에 사용법이 있다.
+2. `firmware/00_i2c_scan`으로 부품을 확인한 뒤, `01_...` 부터 순서대로 업로드하며 진행한다. 각 스케치 맨 위 주석에 사용법이 있다.
 3. 시리얼 모니터는 **115200 baud**, 줄 끝은 "새 줄(Newline)"로 설정한다.
 
 ## 부품
