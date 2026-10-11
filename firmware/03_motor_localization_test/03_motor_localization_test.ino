@@ -34,7 +34,7 @@ const uint8_t TRIALS_PER_MOTOR = 5;
 const uint8_t NUM_TRIALS = NUM_MOTORS * TRIALS_PER_MOTOR;
 const uint16_t STIMULUS_MS = 400;
 
-uint8_t duty = 150;  // 0~255. 3V 모터를 5V로 구동할 때 약 150 이하 권장
+uint8_t duty = 150;  // 0~255. 모듈의 모터가 3V 정격이면 5V 전원에서 약 150 이하 권장
 
 uint8_t order[NUM_TRIALS];
 uint8_t answers[NUM_TRIALS];

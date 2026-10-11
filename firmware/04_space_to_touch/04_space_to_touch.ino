@@ -29,7 +29,7 @@ const uint16_t HYSTERESIS_MM = 50;
 const uint16_t PULSE_ON_MS[4] = {0, 80, 80, 1};
 const uint16_t PULSE_PERIOD_MS[4] = {1, 700, 300, 1};
 
-const uint8_t MAX_DUTY = 150;          // 3V 모터를 5V로 구동 → 약 2.9V
+const uint8_t MAX_DUTY = 150;          // 출발점. 3V 모터에 5V 전원이면 약 2.9V. 세기와 발열을 보고 실험으로 정한다
 const uint16_t STALE_MS = 500;         // 이 시간 동안 새 값이 없으면 센서 고장으로 판단
 const uint16_t ERROR_PERIOD_MS = 2000; // 고장 알림 주기
 

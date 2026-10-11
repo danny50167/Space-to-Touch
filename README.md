@@ -10,8 +10,8 @@
 
 ```
  [머리 유닛]                               [몸 유닛]
- VL53L1X ×6 ── TCA9548A ── 4선 케이블 ──── Arduino Mega / Uno ── 구동 회로 ×6 ── 코인 진동 모터 ×6
- (3D 프린팅 브래킷)    (VCC, GND, SDA, SCL)                         (트랜지스터 + 다이오드)
+ VL53L1X ×6 ── TCA9548A ── 4선 케이블 ──── Arduino Mega / Uno ── 진동 모터 모듈 ×6
+ (3D 프린팅 브래킷)    (VCC, GND, SDA, SCL)                         (MOSFET 내장, VCC·GND·IN)
 ```
 
 센서 번호와 모터 번호는 같은 규칙을 쓴다. 멀티플렉서 채널 번호도 같다.
