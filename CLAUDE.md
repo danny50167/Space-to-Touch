@@ -3,6 +3,12 @@
 새 세션은 이 파일을 먼저 읽고 시작한다. 진행 상황은 `docs/roadmap.md`의 체크박스를 본다.
 설계가 바뀌거나 새 결정이 생기면 이 파일과 관련 문서를 함께 고친다.
 
+## 진행판 (Artifact)
+- 링크: https://claude.ai/artifact/6FQgMdCzBTvjgwHaMFwMRJ (사용자 소유, 비공개)
+- 내용은 Artifact DB에 있다: `phases`(단계), `tasks`(할 일, `done`·`doneAt`), `decisions`(실험으로 정할 것), `meta/project`(마감, 교과 질문).
+- 사용자가 진행판에서 체크한다. 세션을 시작하면 `ArtifactData`로 `tasks`를 읽어 `docs/roadmap.md` 체크박스에 옮긴다.
+- 반대로 roadmap.md 항목이 바뀌거나 결정이 나면(`decisions`의 `status: "decided"`, `result`) DB도 같이 고친다.
+
 ## 프로젝트와 사용자
 - 사용자는 고등학생을 지도하는 **컨설팅 선생님**이다. 학생(고2, 기계공학과 지망, 실력 좋음)이 정규 동아리 안에서 개인 프로젝트로 만든다.
 - 주제: 시각장애인을 위한 **전방 공간 정보 → 촉각 변환 장치** (머리 착용 ToF 센서 6개 → 진동 모듈 6개)
