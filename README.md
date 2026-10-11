@@ -29,6 +29,7 @@
 | `docs/roadmap.md` | 주차별 제작 로드맵, 주차마다 남길 기록 |
 | `docs/design-notes.md` | 핵심 설계 쟁점과 계산 (센서 각도, 모터 위치, 진동 표현 방식) |
 | `docs/wiring.md` | 배선도와 전원 설계 |
+| `docs/parts.md` | 준비물 목록 (전자 부품, 기구 부품, 실험 도구) |
 | `docs/logbook-template.md` | 설계 일지 양식 |
 | `firmware/01_single_sensor_test` | 센서 1개: 거리 모드 비교, 정확도 측정 |
 | `firmware/02_six_sensors_mux` | 센서 6개 + 멀티플렉서: 순차/연속 측정 비교, 갱신 속도 측정 |
@@ -43,13 +44,4 @@
 
 ## 부품
 
-| 부품 | 상태 |
-|---|---|
-| VL53L1X 모듈 ×6 | 보유 |
-| TCA9548A I2C 멀티플렉서 | 보유 |
-| Arduino Mega, Uno | 보유 |
-| 코인 진동 모터 ×6 | 보유 |
-| NPN 트랜지스터(2N2222 등) 또는 N-MOSFET(2N7000 등) ×6 | 확인 필요 |
-| 다이오드(1N4148 등) ×6, 저항 1kΩ ×6 | 확인 필요 |
-| 5V 보조배터리 (모터 전원 분리용) | 확인 필요 |
-| 4심 케이블 약 1m, 헤드밴드(또는 안전모) | 확인 필요 |
+전체 준비물은 [`docs/parts.md`](docs/parts.md) 참고.
