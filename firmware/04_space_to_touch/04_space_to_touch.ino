@@ -1,11 +1,10 @@
 /*
  * 04_space_to_touch
- * 통합 펌웨어: 센서 6개 → 필터 → 거리 단계 → 진동 패턴
+ * 통합 펌웨어: 센서 3개 → 필터 → 거리 단계 → 진동 패턴
  *
- * 번호 규칙 (센서 = 멀티플렉서 채널 = 모터)
- *           왼쪽  가운데  오른쪽
- *   위 줄     0     1      2
- *   아래 줄   3     4      5
+ * 번호 규칙 (센서 = 멀티플렉서 채널 = 모터, 가로 한 줄)
+ *   왼쪽  가운데  오른쪽
+ *    0      1      2
  *
  * 시리얼 명령 (115200 baud)
  *   d : 디버그 출력 켜기/끄기 (거리,단계)
@@ -17,7 +16,7 @@
 #include <VL53L1X.h>
 
 // ───────── 설정 ─────────
-const uint8_t NUM_ZONES = 6;
+const uint8_t NUM_ZONES = 3;
 const uint8_t MUX_ADDR = 0x70;
 const uint32_t TIMING_BUDGET_US = 50000;
 
@@ -34,9 +33,9 @@ const uint16_t STALE_MS = 500;         // 이 시간 동안 새 값이 없으면
 const uint16_t ERROR_PERIOD_MS = 2000; // 고장 알림 주기
 
 #if defined(ARDUINO_AVR_MEGA2560)
-const uint8_t MOTOR_PINS[NUM_ZONES] = {2, 3, 5, 6, 7, 8};
+const uint8_t MOTOR_PINS[NUM_ZONES] = {2, 3, 5};
 #else
-const uint8_t MOTOR_PINS[NUM_ZONES] = {3, 5, 6, 9, 10, 11};
+const uint8_t MOTOR_PINS[NUM_ZONES] = {3, 5, 6};
 #endif
 // ────────────────────────
 

@@ -6,7 +6,7 @@
  *
  * 배선: 01(센서 1개 직접 연결) 또는 02(멀티플렉서) 배선 그대로
  * 시리얼 (115200 baud): 아무 키나 보내면 다시 검사한다.
- *   센서를 하나씩 바꿔 꽂으면서 다시 검사하면 6개를 모두 확인할 수 있다.
+ *   가진 센서 6개를 채널 0~5에 꽂으면 한 번에 검사할 수 있다. 장치에는 그중 3개(채널 0~2)를 쓰고 나머지는 예비로 둔다.
  */
 
 #include <Wire.h>
@@ -14,7 +14,7 @@
 const uint8_t MUX_ADDR = 0x70;
 const uint8_t TOF_ADDR = 0x29;
 const uint16_t VL53L1X_MODEL_ID = 0xEACC;  // VL53L1X의 레지스터 0x010F에 들어 있는 값
-const uint8_t NUM_SENSORS = 6;             // 채널 0~5를 센서용으로 쓴다
+const uint8_t NUM_SENSORS = 6;             // 점검용: 채널 0~5를 검사한다 (장치는 0~2만 쓴다)
 
 bool present(uint8_t addr) {
   Wire.beginTransmission(addr);
