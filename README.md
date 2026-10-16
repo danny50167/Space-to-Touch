@@ -11,6 +11,7 @@
 ```
  [머리 유닛]                               [몸 유닛]
  VL53L1X ×3 ── TCA9548A ── 4선 케이블 ──── Arduino Mega / Uno ── 진동 모터 모듈 ×3
+ MPU-6050 (고개 각도) ──────┘
  (3D 프린팅 브래킷)    (VCC, GND, SDA, SCL)                         (MOSFET 내장, VCC·GND·IN)
 ```
 
@@ -37,6 +38,7 @@
 | `firmware/02_three_sensors_mux` | 센서 3개 + 멀티플렉서: 순차/연속 측정 비교, 갱신 속도 측정 |
 | `firmware/03_motor_localization_test` | 진동 위치 인식 실험 (착용 부위 비교용) |
 | `firmware/04_space_to_touch` | 통합 펌웨어 (센서 → 필터 → 진동 패턴) |
+| `firmware/05_imu_tilt` | 고개 각도 측정: 가속도 / 자이로 / 상보 필터 비교, 예상 바닥 거리 |
 
 ## 시작하기
 

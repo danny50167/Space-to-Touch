@@ -63,6 +63,7 @@ uint8_t scanBus(int16_t skip, bool &tofOk) {
     Serial.print(addr, HEX);
     if (addr == MUX_ADDR) Serial.print(F("  TCA9548A 멀티플렉서"));
     if (addr == TOF_ADDR) Serial.print(F("  ToF 센서 주소"));
+    if (addr == 0x68) Serial.print(F("  MPU-6050 (머리 각도 센서, 멀티플렉서 채널마다 보이는 것이 정상)"));
     Serial.println();
     if (addr == TOF_ADDR) tofOk = checkTof();
   }
