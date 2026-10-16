@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 350" font-family="Menlo, monospace" font-size="11">
+  <rect width="420" height="350" fill="#ffffff"/>
+  <text x="14" y="20" font-size="13" font-weight="bold" fill="#16201c">GY-521 (MPU-6050) 윗면, 1 mm = 12 px</text>
+  <text x="14" y="36" fill="#c2410c">검은 숫자 = 판매처 표기, 주황 = 추정값(캘리퍼스로 실측 확인)</text>
+  <!-- board 21.2 x 16.4 at origin (60,70), scale 12 -->
+  <g transform="translate(60,70)">
+    <rect x="0" y="0" width="254.4" height="196.8" rx="4" fill="#2a56be" fill-opacity="0.12" stroke="#2a56be" stroke-width="1.5"/>
+    <!-- holes d3 at (2.85,2.6) and (18.35,2.6) -->
+    <circle cx="34.2" cy="31.2" r="18" fill="#fff" stroke="#16201c" stroke-width="1.2"/>
+    <circle cx="220.2" cy="31.2" r="18" fill="#fff" stroke="#16201c" stroke-width="1.2"/>
+    <!-- chip 4x4 -->
+    <rect x="103.2" y="74.4" width="48" height="48" fill="#16201c"/>
+    <text x="127.2" y="138" text-anchor="middle" fill="#16201c">MPU-6050</text>
+    <!-- axis arrows -->
+    <line x1="127" y1="98" x2="200" y2="98" stroke="#c2410c" stroke-width="2"/>
+    <polygon points="200,93 210,98 200,103" fill="#c2410c"/>
+    <text x="212" y="102" fill="#c2410c" font-weight="bold">X</text>
+    <line x1="127" y1="98" x2="127" y2="50" stroke="#c2410c" stroke-width="2"/>
+    <polygon points="122,50 127,40 132,50" fill="#c2410c"/>
+    <text x="132" y="50" fill="#c2410c" font-weight="bold">Y</text>
+    <!-- header 8 pins pitch 2.54, row at 1.3 from bottom edge -->
+    <g fill="#fff" stroke="#16201c" stroke-width="1">
+      <circle cx="20.5" cy="181.2" r="6"/><circle cx="51" cy="181.2" r="6"/><circle cx="81.5" cy="181.2" r="6"/><circle cx="111.9" cy="181.2" r="6"/>
+      <circle cx="142.4" cy="181.2" r="6"/><circle cx="172.9" cy="181.2" r="6"/><circle cx="203.4" cy="181.2" r="6"/><circle cx="233.9" cy="181.2" r="6"/>
+    </g>
+    <g font-size="8" fill="#16201c" text-anchor="middle">
+      <text x="20.5" y="166">VCC</text><text x="51" y="166">GND</text><text x="81.5" y="166">SCL</text><text x="111.9" y="166">SDA</text>
+      <text x="142.4" y="166">XDA</text><text x="172.9" y="166">XCL</text><text x="203.4" y="166">AD0</text><text x="233.9" y="166">INT</text>
+    </g>
+    <!-- dims -->
+    <g stroke="#16201c" stroke-width="0.8" fill="none">
+      <line x1="0" y1="-14" x2="254.4" y2="-14"/><line x1="0" y1="-20" x2="0" y2="-8"/><line x1="254.4" y1="-20" x2="254.4" y2="-8"/>
+      <line x1="270" y1="0" x2="270" y2="196.8"/><line x1="264" y1="0" x2="276" y2="0"/><line x1="264" y1="196.8" x2="276" y2="196.8"/>
+      <line x1="34.2" y1="214" x2="220.2" y2="214" stroke="#c2410c"/><line x1="34.2" y1="208" x2="34.2" y2="220" stroke="#c2410c"/><line x1="220.2" y1="208" x2="220.2" y2="220" stroke="#c2410c"/>
+    </g>
+    <text x="127.2" y="-18" text-anchor="middle" fill="#16201c">21.2</text>
+    <text x="280" y="102" fill="#16201c">16.4</text>
+    <text x="127.2" y="230" text-anchor="middle" fill="#c2410c">구멍 간격 15.5 (판매처 1곳)</text>
+    <text x="34.2" y="64" text-anchor="middle" fill="#c2410c">Ø3 (M3)</text>
+    <text x="-6" y="35" text-anchor="end" fill="#c2410c">2.6?</text>
+    <text x="127.2" y="-32" text-anchor="middle" fill="#16201c" font-size="9"> </text>
+  </g>
+  <text x="14" y="322" fill="#16201c">두께: 부품 포함 약 3.3 mm (핀 제외). 핀 간격 2.54 mm.</text>
+  <text x="14" y="338" fill="#c2410c">축 방향(X, Y)과 칩 위치는 실제 기판 인쇄를 보고 확인.</text>
+</svg>
