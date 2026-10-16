@@ -21,7 +21,7 @@ const uint8_t MUX_ADDR = 0x70;
 const uint32_t TIMING_BUDGET_US = 50000;
 
 // 단계 경계 (mm). LEVEL_MM[k] 보다 가까우면 k+1 단계 이상
-const uint16_t LEVEL_MM[3] = {1500, 1000, 500};
+const uint16_t LEVEL_MM[3] = {2000, 1000, 500};
 const uint16_t HYSTERESIS_MM = 50;
 
 // 단계별 진동 패턴: 켜짐 시간 / 주기 (ms). 3단계는 계속 진동
