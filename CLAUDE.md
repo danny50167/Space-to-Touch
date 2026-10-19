@@ -62,4 +62,5 @@
 | `docs/design-notes.md` | 센서 각도 계산, 이차곡선 분석, 모터 위치, 진동 표현, PLA 설계 |
 | `docs/wiring.md` | I2C, 진동 모듈 배선, 전원 |
 | `docs/logbook-template.md` | 설계 일지 양식 (일지는 `docs/log/YYYY-MM-DD.md`) |
+| `cad/reference/` | 구입 부품 참고 모델(STEP): VL53L1X, 시야 원뿔, GY-521. 학생 설계 부품은 `cad/`에 버전별로 저장 |
 | `firmware/00_i2c_scan` ~ `05_imu_tilt` | 부품 확인 → 센서 1개 → 센서 3개 → 진동 위치 실험 → 통합 → 고개 각도 |
