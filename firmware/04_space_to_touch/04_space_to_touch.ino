@@ -6,13 +6,14 @@
  *   왼쪽  가운데  오른쪽
  *    0      1      2
  *
- * 시리얼 명령 (115200 baud)
+ * 시리얼 명령 (115200 baud, ESP32는 무선으로도 받는다: docs/esp32.md)
  *   d : 디버그 출력 켜기/끄기 (거리,단계)
  *
  * 조정할 값은 아래 "설정" 부분에 모여 있다. 바꿀 때마다 이유를 일지에 남길 것.
  */
 
 #include <Wire.h>
+#include "wifi_log.h"  // ESP32: 무선 기록 (docs/esp32.md)
 #include <VL53L1X.h>
 
 // ───────── 설정 ─────────
@@ -32,9 +33,11 @@ const uint8_t MAX_DUTY = 150;          // 출발점. 3V 모터에 5V 전원이�
 const uint16_t STALE_MS = 500;         // 이 시간 동안 새 값이 없으면 센서 고장으로 판단
 const uint16_t ERROR_PERIOD_MS = 2000; // 고장 알림 주기
 
-#if defined(ARDUINO_AVR_MEGA2560)
+#if defined(ARDUINO_ARCH_ESP32)
+const uint8_t MOTOR_PINS[NUM_ZONES] = {25, 26, 27};
+#elif defined(ARDUINO_AVR_MEGA2560)
 const uint8_t MOTOR_PINS[NUM_ZONES] = {2, 3, 5};
-#else
+#else  // Uno
 const uint8_t MOTOR_PINS[NUM_ZONES] = {3, 5, 6};
 #endif
 // ────────────────────────
@@ -144,17 +147,17 @@ void printDebug(uint32_t now) {
   if (!debug || now - lastPrint < 200) return;
   lastPrint = now;
   for (uint8_t i = 0; i < NUM_ZONES; i++) {
-    if (i) Serial.print(',');
-    if (filtered[i] == NO_TARGET) Serial.print('-');
-    else Serial.print(filtered[i]);
-    Serial.print(':');
-    Serial.print(level[i]);
+    if (i) Log.print(',');
+    if (filtered[i] == NO_TARGET) Log.print('-');
+    else Log.print(filtered[i]);
+    Log.print(':');
+    Log.print(level[i]);
   }
-  Serial.println();
+  Log.println();
 }
 
 void setup() {
-  Serial.begin(115200);
+  Log.begin(115200);
   Wire.begin();
 
   for (uint8_t i = 0; i < NUM_ZONES; i++) {
@@ -167,9 +170,9 @@ void setup() {
     selectChannel(i);
     sensors[i].setTimeout(500);
     if (!sensors[i].init()) {
-      Serial.print(F("# 센서 "));
-      Serial.print(i);
-      Serial.println(F(" 초기화 실패"));
+      Log.print(F("# 센서 "));
+      Log.print(i);
+      Log.println(F(" 초기화 실패"));
       ok = false;
       break;
     }
@@ -183,7 +186,7 @@ void setup() {
 
   if (!ok) {
     // 초기화 실패도 진동으로 알린다 (사용자는 화면을 볼 수 없다)
-    Serial.println(F("# 초기화 실패: 배선을 확인하세요."));
+    Log.println(F("# 초기화 실패: 배선을 확인하세요."));
     while (true) driveErrorPattern(millis());
   }
 
@@ -193,7 +196,7 @@ void setup() {
 }
 
 void loop() {
-  if (Serial.available() && Serial.read() == 'd') debug = !debug;
+  if (Log.available() && Log.read() == 'd') debug = !debug;
 
   uint32_t now = millis();
   readSensors(now);

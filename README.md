@@ -10,10 +10,12 @@
 
 ```
  [머리 유닛]                               [몸 유닛]
- VL53L1X ×3 ── TCA9548A ── 4선 케이블 ──── Arduino Mega / Uno ── 진동 모터 모듈 ×3
- MPU-6050 (고개 각도) ──────┘
- (3D 프린팅 브래킷)    (VCC, GND, SDA, SCL)                         (MOSFET 내장, VCC·GND·IN)
+ VL53L1X ×3 ── TCA9548A ── 4선 케이블 ──── ESP32 DevKitC ── 진동 모터 모듈 ×3
+ MPU-6050 (고개 각도) ──────┘                    ┆ Wi-Fi
+ (3D 프린팅 브래킷)    (3.3V, GND, SDA, SCL)   맥북 (데이터 기록)    (MOSFET 내장, VCC·GND·IN)
 ```
+
+보드는 처음에 Arduino Mega로 정했다가, 걸으면서 하는 실험의 데이터를 무선으로 받으려고 ESP32로 바꿨다 (11/10). Mega·Uno는 예비이고 펌웨어는 세 보드 모두에서 돌아간다. 사용법은 `docs/esp32.md`.
 
 센서 번호와 모터 번호는 같은 규칙을 쓴다. 멀티플렉서 채널 번호도 같다.
 
@@ -31,6 +33,7 @@
 | `docs/roadmap.md` | 작업 순서대로 정리한 할 일 목록, 단계마다 남길 기록 |
 | `docs/design-notes.md` | 핵심 설계 쟁점과 계산 (센서 각도, 모터 위치, 진동 표현 방식) |
 | `docs/wiring.md` | 배선도와 전원 설계 |
+| `docs/esp32.md` | ESP32 설치, 첫 업로드, 무선으로 데이터 받기 (맥북) |
 | `docs/parts.md` | 준비물 목록 (전자 부품, 기구 부품, 실험 도구) |
 | `docs/logbook-template.md` | 설계 일지 양식 |
 | `firmware/00_i2c_scan` | 부품 확인: I2C 장치 검사, 진짜 VL53L1X인지 확인, 멀티플렉서 채널별 검사 |
@@ -42,9 +45,10 @@
 
 ## 시작하기
 
-1. Arduino IDE → 라이브러리 매니저에서 **"VL53L1X" (by Pololu)** 를 설치한다.
+1. Arduino IDE에 ESP32 보드와 **"VL53L1X" (by Pololu)** 라이브러리를 설치한다 (`docs/esp32.md` 1장).
 2. `firmware/00_i2c_scan`으로 부품을 확인한 뒤, `01_...` 부터 순서대로 업로드하며 진행한다. 각 스케치 맨 위 주석에 사용법이 있다.
 3. 시리얼 모니터는 **115200 baud**, 줄 끝은 "새 줄(Newline)"로 설정한다.
+4. 걸으면서 하는 실험은 무선으로 받는다 (`02`, `04`, `05`만 해당, `docs/esp32.md` 3장).
 
 ## 부품
 

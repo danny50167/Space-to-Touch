@@ -2,8 +2,9 @@
  * 01_single_sensor_test
  * VL53L1X 센서 1개로 거리 모드를 비교하고 정확도를 측정한다.
  *
- * 배선: 센서를 아두이노 I2C에 직접 연결 (멀티플렉서 없이)
- *   Mega: SDA=20, SCL=21 / Uno: SDA=A4, SCL=A5
+ * 배선: 센서를 보드 I2C에 직접 연결 (멀티플렉서 없이)
+ *   ESP32: SDA=21, SCL=22, VIN=3.3V / Mega: SDA=20, SCL=21 / Uno: SDA=A4, SCL=A5
+ *   책상에서 하는 실험이라 USB로 연결해서 쓴다.
  *
  * 시리얼 명령 (115200 baud, 줄 끝: 새 줄)
  *   s / m / l : 거리 모드 Short / Medium / Long

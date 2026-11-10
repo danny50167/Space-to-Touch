@@ -6,10 +6,11 @@
  *   왼쪽  가운데  오른쪽
  *    0      1      2
  *
- * 출력 (115200 baud)
+ * 출력 (115200 baud, ESP32는 무선으로도 나간다: docs/esp32.md)
  *   CSV 한 줄: 시간(ms),d0,d1,d2   (-1 = 감지 없음 / 무효)
  *   2초마다:  # 센서별 갱신 속도(Hz)
- *   → 시리얼 플로터로 보면 3개 값을 한 번에 비교할 수 있다.
+ *   → 시리얼 플로터로 보면 3개 값을 한 번에 비교할 수 있다 (USB 연결일 때).
+ *   → 접근 실험(걸으면서 측정)은 무선으로 받아 파일로 저장한다.
  *
  * 시리얼 명령
  *   c : 연속 측정 (3개가 동시에 측정 → 빠름, 적외선 간섭 가능성 있음)
@@ -17,6 +18,7 @@
  */
 
 #include <Wire.h>
+#include "wifi_log.h"  // ESP32: 무선 기록 (docs/esp32.md)
 #include <VL53L1X.h>
 
 const uint8_t NUM_SENSORS = 3;
@@ -55,15 +57,15 @@ void setContinuous(bool on) {
     if (on) sensors[i].startContinuous(TIMING_BUDGET_US / 1000);
     else sensors[i].stopContinuous();
   }
-  Serial.println(on ? F("# 연속 측정 모드") : F("# 순차 측정 모드"));
+  Log.println(on ? F("# 연속 측정 모드") : F("# 순차 측정 모드"));
 }
 
 void setup() {
-  Serial.begin(115200);
+  Log.begin(115200);
   Wire.begin();
 
   if (!selectChannel(0)) {
-    Serial.println(F("# 멀티플렉서(0x70)를 찾을 수 없음. 배선을 확인하세요."));
+    Log.println(F("# 멀티플렉서(0x70)를 찾을 수 없음. 배선을 확인하세요."));
     while (true) {}
   }
 
@@ -76,9 +78,9 @@ void setup() {
       sensors[i].setDistanceMode(VL53L1X::Long);
       sensors[i].setMeasurementTimingBudget(TIMING_BUDGET_US);
     } else {
-      Serial.print(F("# 센서 "));
-      Serial.print(i);
-      Serial.println(F(" 초기화 실패"));
+      Log.print(F("# 센서 "));
+      Log.print(i);
+      Log.println(F(" 초기화 실패"));
     }
   }
 
@@ -86,8 +88,8 @@ void setup() {
 }
 
 void loop() {
-  if (Serial.available()) {
-    char c = Serial.read();
+  if (Log.available()) {
+    char c = Log.read();
     if (c == 'c' && !continuousMode) setContinuous(true);
     else if (c == 'q' && continuousMode) setContinuous(false);
   }
@@ -108,23 +110,23 @@ void loop() {
 
   if (now - lastPrint >= PRINT_INTERVAL_MS) {
     lastPrint = now;
-    Serial.print(now);
+    Log.print(now);
     for (uint8_t i = 0; i < NUM_SENSORS; i++) {
-      Serial.print(',');
-      Serial.print(distance[i]);
+      Log.print(',');
+      Log.print(distance[i]);
     }
-    Serial.println();
+    Log.println();
   }
 
   if (now - lastRate >= RATE_INTERVAL_MS) {
     float seconds = (now - lastRate) / 1000.0;
     lastRate = now;
-    Serial.print(F("# Hz:"));
+    Log.print(F("# Hz:"));
     for (uint8_t i = 0; i < NUM_SENSORS; i++) {
-      Serial.print(' ');
-      Serial.print(updates[i] / seconds, 1);
+      Log.print(' ');
+      Log.print(updates[i] / seconds, 1);
       updates[i] = 0;
     }
-    Serial.println();
+    Log.println();
   }
 }

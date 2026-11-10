@@ -6,12 +6,12 @@
  *   상보 필터: 둘을 섞는다. 각도 = α·(이전 각도 + 회전 속도·Δt) + (1 − α)·가속도 각도
  *
  * 배선 (docs/wiring.md 4장)
- *   VCC → 5V (GY-521 모듈은 레귤레이터 내장), GND → GND
- *   SDA, SCL → 아두이노 SDA, SCL에 바로 연결 (멀티플렉서를 거치지 않는다)
+ *   VCC → ESP32는 3.3V (Mega·Uno는 5V, GY-521 모듈은 레귤레이터 내장), GND → GND
+ *   SDA, SCL → 보드 SDA, SCL에 바로 연결 (멀티플렉서를 거치지 않는다)
  *   AD0 → GND (주소 0x68)
  * 장착: 센서 바에 단단히 고정한다. 모듈 기판의 X축 화살표가 앞(센서가 보는 쪽)을 향하게 한다.
  *
- * 출력 (115200 baud, 50 Hz)
+ * 출력 (115200 baud, 50 Hz, ESP32는 무선으로도 나간다: docs/esp32.md)
  *   CSV: 시간(ms),가속도각,자이로각,상보필터각,예상바닥거리(mm)
  *   각도는 아래로 숙이면 +. 예상 바닥 거리는 시야 아래 끝이 바닥에 닿는 거리 (-1 = 바닥에 안 닿음)
  *
@@ -24,6 +24,7 @@
  */
 
 #include <Wire.h>
+#include "wifi_log.h"  // ESP32: 무선 기록 (docs/esp32.md)
 
 const uint8_t MPU_ADDR = 0x68;
 const int8_t ACC_SIGN = 1;
@@ -87,7 +88,7 @@ float gyroRateDps() {
 }
 
 void calibrateGyro() {
-  Serial.println(F("# 자이로 영점 잡는 중. 센서를 가만히 두세요."));
+  Log.println(F("# 자이로 영점 잡는 중. 센서를 가만히 두세요."));
   float sum = 0;
   uint16_t n = 0;
   while (n < BIAS_SAMPLES) {
@@ -98,9 +99,9 @@ void calibrateGyro() {
     delay(SAMPLE_MS);
   }
   gyroBias = sum / n;
-  Serial.print(F("# 자이로 영점: "));
-  Serial.print(gyroBias, 3);
-  Serial.println(F(" °/s"));
+  Log.print(F("# 자이로 영점: "));
+  Log.print(gyroBias, 3);
+  Log.println(F(" °/s"));
 }
 
 // 시야 아래 끝이 바닥에 닿는 거리. 아래를 보지 않으면 -1
@@ -111,12 +112,12 @@ float floorDistanceMm(float pitch) {
 }
 
 void setup() {
-  Serial.begin(115200);
+  Log.begin(115200);
   Wire.begin();
 
   Wire.beginTransmission(MPU_ADDR);
   if (Wire.endTransmission() != 0) {
-    Serial.println(F("# MPU-6050(0x68)을 찾을 수 없음. 배선과 AD0를 확인하세요."));
+    Log.println(F("# MPU-6050(0x68)을 찾을 수 없음. 배선과 AD0를 확인하세요."));
     while (true) {}
   }
   writeReg(0x6B, 0x00);  // 절전 모드 해제
@@ -130,21 +131,21 @@ void setup() {
   accPitch = gyroPitch = compPitch = accelPitchDeg();
   zeroOffset = compPitch;
   lastMs = millis();
-  Serial.println(F("# z: 지금 자세를 0°로, +/-: α 조절"));
-  Serial.println(F("ms,acc,gyro,comp,floor_mm"));
+  Log.println(F("# z: 지금 자세를 0°로, +/-: α 조절"));
+  Log.println(F("ms,acc,gyro,comp,floor_mm"));
 }
 
 void loop() {
-  if (Serial.available()) {
-    char c = Serial.read();
+  if (Log.available()) {
+    char c = Log.read();
     if (c == 'z') {
       zeroOffset = compPitch;
       gyroPitch = compPitch;  // 자이로 각도의 드리프트를 이 순간부터 다시 본다
-      Serial.println(F("# 0° 기준을 다시 잡았다"));
+      Log.println(F("# 0° 기준을 다시 잡았다"));
     } else if (c == '+' || c == '-') {
       alpha = constrain(alpha + (c == '+' ? 0.01 : -0.01), 0.0, 0.999);
-      Serial.print(F("# α = "));
-      Serial.println(alpha, 3);
+      Log.print(F("# α = "));
+      Log.println(alpha, 3);
     }
   }
 
@@ -160,13 +161,13 @@ void loop() {
   compPitch = alpha * (compPitch + rate * dt) + (1 - alpha) * accPitch;
 
   float pitch = compPitch - zeroOffset;
-  Serial.print(now);
-  Serial.print(',');
-  Serial.print(accPitch - zeroOffset, 2);
-  Serial.print(',');
-  Serial.print(gyroPitch - zeroOffset, 2);
-  Serial.print(',');
-  Serial.print(pitch, 2);
-  Serial.print(',');
-  Serial.println(floorDistanceMm(pitch), 0);
+  Log.print(now);
+  Log.print(',');
+  Log.print(accPitch - zeroOffset, 2);
+  Log.print(',');
+  Log.print(gyroPitch - zeroOffset, 2);
+  Log.print(',');
+  Log.print(pitch, 2);
+  Log.print(',');
+  Log.println(floorDistanceMm(pitch), 0);
 }

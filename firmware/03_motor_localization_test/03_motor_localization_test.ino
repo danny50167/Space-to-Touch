@@ -7,6 +7,9 @@
  *   왼쪽  가운데  오른쪽
  *    1      2      3
  *
+ * 배선: docs/wiring.md 2장. 모터 0~2 → ESP32 25, 26, 27 (Mega 2, 3, 5 / Uno 3, 5, 6)
+ *   실험자가 노트북 옆에서 답을 입력하므로 USB로 연결해서 쓴다.
+ *
  * 시리얼 명령 (115200 baud, 줄 끝: 새 줄)
  *   대기 상태:
  *     1~3 : 해당 모터를 1초 진동 (배선 확인용)
@@ -22,9 +25,11 @@
  *       참가자는 안대와 함께 이어폰으로 백색소음을 듣게 한다 (실험 설계의 통제 변인).
  */
 
-#if defined(ARDUINO_AVR_MEGA2560)
+#if defined(ARDUINO_ARCH_ESP32)
+const uint8_t MOTOR_PINS[] = {25, 26, 27};
+#elif defined(ARDUINO_AVR_MEGA2560)
 const uint8_t MOTOR_PINS[] = {2, 3, 5};
-#else
+#else  // Uno
 const uint8_t MOTOR_PINS[] = {3, 5, 6};
 #endif
 
@@ -33,7 +38,7 @@ const uint8_t TRIALS_PER_MOTOR = 10;  // 모터 3개 × 10번 = 부위마다 30�
 const uint8_t NUM_TRIALS = NUM_MOTORS * TRIALS_PER_MOTOR;
 const uint16_t STIMULUS_MS = 400;
 
-uint8_t duty = 150;  // 0~255. 모듈의 모터가 3V 정격이면 5V 전원에서 약 150 이하 권장
+uint8_t duty = 150;  // 0~255. 모듈의 모터가 3V 정격이면 5V 전원에서 약 150 이하 권장 (보드가 달라도 같다)
 
 uint8_t order[NUM_TRIALS];
 uint8_t answers[NUM_TRIALS];
@@ -127,7 +132,9 @@ void setup() {
     pinMode(MOTOR_PINS[i], OUTPUT);
     analogWrite(MOTOR_PINS[i], 0);
   }
+#if !defined(ARDUINO_ARCH_ESP32)
   randomSeed(analogRead(A0));  // 연결하지 않은 핀의 잡음으로 매번 다른 순서
+#endif                         // ESP32는 하드웨어 난수 발생기를 쓰므로 필요 없다
   Serial.println(F("# 1~3: 모터 확인, +/-: 세기, t: 실험 시작"));
 }
 
