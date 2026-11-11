@@ -9,7 +9,7 @@
 
 배송비를 줄이려고 **두 곳**에서만 산다. 링크와 체크 칸이 있는 주문표: https://claude.ai/artifact/5PVkkeJJqAPPEhkiUpkK5h (사용자 소유, 비공개)
 
-- **디바이스마트 한 번 주문**: 66,000원(VAT 포함) 이상이면 무료배송, 아니면 2,700원. 이번 주문은 약 8만 7천 원이라 무료다. 맥북용 케이블을 빼도(아래 참고) 약 8만 3천 원이라 무료배송은 유지된다.
+- **디바이스마트 한 번 주문**: 66,000원(VAT 포함) 이상이면 무료배송, 아니면 2,700원. 이번 주문은 약 7만 9천 원이라 무료다. 맥북용 케이블을 빼도(아래 참고) 약 7만 4천 원이라 무료배송은 유지된다.
 - **쿠팡 로켓배송**: 와우 회원이라 무료. 디바이스마트에 없거나 쿠팡이 나은 것(헤드 스트랩, 캘리퍼스, 기구 소모품)만 산다.
 - 가격은 11/11 판매 페이지의 VAT 포함 가격이다. 쿠팡은 작업 환경에서 페이지가 열리지 않아 검색 링크와 고르는 기준만 적었다.
 
@@ -27,10 +27,11 @@
 | [NT- DIY 열수축튜브 328세트](https://www.devicemart.co.kr/goods/view?no=1320936) | 1 | 4,290 | 전선 연결부 보호 |
 | [[GA6] 50 × 80 사각 만능 기판 (양면)](https://www.devicemart.co.kr/goods/view?no=24860) | 1 | 3,850 | 머리 유닛 배선판 |
 | [핀헤더소켓 Single 1×40 Straight](https://www.devicemart.co.kr/goods/view?no=3585) | 2 | 583 | 만능기판에 멀티플렉서를 끼울 소켓 |
-| [둥근머리 렌치볼트 + 너트 샘플키트 340pcs [NT-KIT-LS027]](https://www.devicemart.co.kr/goods/view?no=1385067) | 1 | 9,680 | M3 × 5/6/8/10/12/14/16/18/20 mm 각 20개 + 너트 160개. 진동 모듈·GY-521·쐐기 블록 |
+| 스텐 둥근머리 샘스볼트 [M3x10](https://www.devicemart.co.kr/goods/view?no=10911633) | 10 | 44 | 진동 모듈 3개 × 2 + GY-521 × 2 + 여분. 십자 머리, 와셔 2장이 붙어 있다 |
+| 스텐 둥근머리 샘스볼트 [M3x16](https://www.devicemart.co.kr/goods/view?no=10911636) · [M3x20](https://www.devicemart.co.kr/goods/view?no=10911637) · [M3x25](https://www.devicemart.co.kr/goods/view?no=10911638) | 각 5 | 55 / 55 / 66 | 쐐기 블록 고정. 쐐기 각도마다 두께가 달라서 길이 3가지 |
+| [너트 (니켈) M3](https://www.devicemart.co.kr/goods/view?no=34324) | 25 | 11 | M3 볼트용 |
 | 스텐 유두머리 렌치볼트 [M2x8](https://www.devicemart.co.kr/goods/view?no=10915158) · [M2x10](https://www.devicemart.co.kr/goods/view?no=10915159) · [M2x12](https://www.devicemart.co.kr/goods/view?no=10915160) | 각 10 | 55 | 센서 고정. 홀더 두께가 정해지기 전이라 길이 3가지 |
 | [너트 (니켈) M2](https://www.devicemart.co.kr/goods/view?no=34323) | 30 | 11 | M2 볼트용 |
-| [스텐 평와샤 M3](https://www.devicemart.co.kr/goods/view?no=10893364) | 20 | 11 | 쐐기 블록 고정 |
 | [Coms USB 3.1 Type C to Micro 5Pin 케이블 1M [IF001]](https://www.devicemart.co.kr/goods/view?no=12169592) | 1 | 4,510 | 맥북(USB-C) ↔ ESP32(마이크로 USB). 업로드와 시리얼에 쓰는 **데이터** 케이블 |
 
 ### 쿠팡 (로켓배송 표시가 있는 상품만)
@@ -39,7 +40,7 @@
 | [고프로 호환 헤드 스트랩](https://www.coupang.com/vp/products/1800447723?itemId=3063437232&vendorItemId=71051392279) | 1 | 로켓배송인지, 탑 스트랩·이마 3발 마운트·나비나사가 있는지 담기 전에 확인 |
 | [고프로 나비나사 세트](https://www.coupang.com/np/search?q=%EA%B3%A0%ED%94%84%EB%A1%9C+%EB%82%98%EB%B9%84%EB%82%98%EC%82%AC+%EC%84%B8%ED%8A%B8) | 1 | M5, 짧은 것과 긴 것(약 25 mm 이상)이 함께 든 세트 |
 | [디지털 캘리퍼스 150 mm](https://www.coupang.com/np/search?q=%EB%94%94%EC%A7%80%ED%84%B8+%EC%BA%98%EB%A6%AC%ED%8D%BC%EC%8A%A4+150mm+%EC%8A%A4%ED%85%8C%EC%9D%B8%EB%A6%AC%EC%8A%A4) | 1 | 스테인리스, 분해능 0.01 mm (플라스틱 몸체는 피한다) |
-| [육각렌치 세트](https://www.coupang.com/np/search?q=%EC%9C%A1%EA%B0%81%EB%A0%8C%EC%B9%98+%EC%84%B8%ED%8A%B8+1.5mm) | 1 | **1.5 mm**(M2 유두머리)와 **2 mm**(M3 둥근머리) 포함. 집에 있으면 뺀다 |
+| [육각렌치 세트](https://www.coupang.com/np/search?q=%EC%9C%A1%EA%B0%81%EB%A0%8C%EC%B9%98+%EC%84%B8%ED%8A%B8+1.5mm) | 1 | **1.5 mm**(M2 유두머리 볼트)가 들어 있는 것. M3는 십자 드라이버로 조인다. 집에 있으면 뺀다 |
 | [벨크로 고무 밴드](https://www.coupang.com/np/search?q=%EB%B2%A8%ED%81%AC%EB%A1%9C+%EA%B3%A0%EB%AC%B4%EB%B0%B4%EB%93%9C+50mm) | 1 | 폭 5 cm 안팎, 1 m 이상, 잘 늘어나는 것 |
 | [EVA 폼 시트 2 mm](https://www.coupang.com/np/search?q=EVA+%ED%8F%BC+%EC%8B%9C%ED%8A%B8+2mm) | 1 | A4 몇 장. 모터 홀더 진동 격리 |
 | [USB-A ↔ 마이크로 5핀 짧은 케이블 (30 cm 안팎)](https://www.coupang.com/np/search?q=USB+A+%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C5%ED%95%80+%EC%BC%80%EC%9D%B4%EB%B8%94+30cm) | 1 | **보조배터리 출력이 USB-A일 때만.** 집에 있는 옛 안드로이드 충전선이어도 된다. 보조배터리가 USB-C면 맥북용 C ↔ 마이크로 케이블을 같이 쓴다 |
@@ -49,7 +50,7 @@
 - **ESP32 CH9102X 보드**: 1,100원 싸지만 CP2102가 맥에서 자료가 더 많다.
 - **디지털 캘리퍼스 (디바이스마트 MC500-150)**: 업체 직배송이라 배송비 4,400원이 따로 붙는다 → 쿠팡.
 - **USB 브레이크아웃 보드, 모터용 보조배터리 분리**: 확장보드로 전원을 한 곳에서 넣기로 해서 뺐다 (`wiring.md` 3장).
-- **M2·M3·M4 볼트 키트 480pcs (LS026, 30,800원)**: 처음에 골랐지만 M4는 쓸 곳이 없고 양이 많다. M3 키트 + M2 낱개로 바꿔 약 2만 원을 줄였다 (11/11).
+- **M2·M3·M4 볼트 키트 480pcs (LS026, 30,800원)**: 처음에 골랐지만 M4는 쓸 곳이 없고 양이 많다. 필요한 만큼 낱개로 바꿨다 (11/11). M3는 약 14개(진동 모듈 6, GY-521 2, 쐐기 블록 약 6)만 쓴다. M3 키트(340pcs, 9,680원)도 같은 이유로 뺐다.
 - **M2 황동 서포트 키트**: 준비 기간이 1주일이라 디바이스마트 주문 전체가 늦어질 수 있다. 스페이서는 PLA로 출력한다.
 
 ---
@@ -148,7 +149,7 @@
 |---|---|---|---|
 | ✅ PLA 3D 프린터 | — | — | |
 | PLA 필라멘트 | 남은 양 확인 | 기구 설계 | v1, v2, 모터 홀더, 쐐기 블록 여러 개를 출력한다. 1 kg 한 롤 기준 절반 이상 남아 있으면 충분 |
-| M3 렌치볼트 키트(5~20 mm) + M2 볼트 8/10/12 mm 각 10 + M2 너트 30 + M3 와셔 20 + 육각렌치 | 1 | 기구 설계 | 센서 M2(구멍 2 mm), 진동 모듈·GY-521 M3(구멍 3 mm), 쐐기 블록 M3 12~16 mm |
+| M3 샘스볼트(와셔 일체) 10 mm 10개 + 16·20·25 mm 각 5개 + M3 너트 25 + M2 볼트 8/10/12 mm 각 10 + M2 너트 30 + 육각렌치 1.5 mm | 1 | 기구 설계 | 센서 M2(구멍 2 mm), 진동 모듈·GY-521 M3(구멍 3 mm), 쐐기 블록 M3 12~16 mm |
 | 고프로 나비나사 세트 (M5, 짧은 것 + 긴 것) | 1 | 기구 설계 | 고프로 마운트 힌지(세로 각도). 마운트 총두께를 재고 길이를 고른다 |
 | 고프로 호환 헤드 스트랩 (탑 스트랩, 실리콘 미끄럼 방지, 3발 마운트) | 1 | 기구 설계 | 헤드 마운트를 고정한다. 이마 쪽 마운트를 세로 각도 힌지로 쓴다. [쿠팡](https://www.coupang.com/vp/products/1800447723?itemId=3063437232&vendorItemId=71051392279) |
 | 디지털 캘리퍼스 150 mm | 1 | 기구 설계 | 스트랩 마운트, 모듈·센서 구멍, 기판 두께 실측 (없어서 산다) |
